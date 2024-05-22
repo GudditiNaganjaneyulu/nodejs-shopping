@@ -13,7 +13,7 @@ jobs:
       - name: Run Trivy scanner
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: config
+          scan-type: fs
           hide-progress: true
           output: trivy.txt
 
