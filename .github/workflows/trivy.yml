@@ -1,4 +1,4 @@
-name: Synk - Scan
+name: trivy - Scan
 on:
   push:
 
