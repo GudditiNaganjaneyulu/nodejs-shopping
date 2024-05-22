@@ -49,17 +49,17 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'   
-          output: 'trivy.txt'   
+          output: 'trivy.html'   
 
       - name: Publish Trivy Output to Summary
         run: |
-          if [[ -s trivy.txt ]]; then
+          if [[ -s trivy.html ]]; then
             {
               echo "### Security Output"
               echo "<details><summary>Click to expand</summary>"
               echo ""
               echo '```terraform'
-              cat trivy.txt
+              cat trivy.html
               echo '```'
               echo "</details>"
             } >> $GITHUB_STEP_SUMMARY
