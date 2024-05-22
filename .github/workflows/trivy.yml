@@ -46,7 +46,6 @@ jobs:
         with:
           image-ref: 'gudditi/nodejs-shopping:latest'
           format: 'table'
-          scan-type: fs,image
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
