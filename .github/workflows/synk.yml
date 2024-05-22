@@ -44,22 +44,22 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
-          format: 'table'
+          format: 'json'
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'   
-          output: 'trivy.html'   
+          output: 'trivy.json'   
 
       - name: Publish Trivy Output to Summary
         run: |
-          if [[ -s trivy.html ]]; then
+          if [[ -s trivy.json ]]; then
             {
               echo "### Security Output"
               echo "<details><summary>Click to expand</summary>"
               echo ""
               echo '```terraform'
-              cat trivy.html
+              cat trivy.json
               echo '```'
               echo "</details>"
             } >> $GITHUB_STEP_SUMMARY
