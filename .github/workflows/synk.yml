@@ -39,11 +39,11 @@ jobs:
           fetch-depth: 0
       - name: Build an image from Dockerfile
         run: |
-          docker build -t gudditi/nodejs-shopping:${{ github.sha }} .
+          docker build -t gudditi/nodejs-shopping:latest .
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'gudditi/nodejs-shopping:${{ github.sha }}'
+          image-ref: 'gudditi/nodejs-shopping:latest'
           format: 'table'
           #exit-code: '0'
           ignore-unfixed: true
@@ -70,4 +70,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: docker image push to docker hub
-        run: docker push gudditi/nodejs-shopping:${{ github.sha }} 
+        run: docker push gudditi/nodejs-shopping:latest 
